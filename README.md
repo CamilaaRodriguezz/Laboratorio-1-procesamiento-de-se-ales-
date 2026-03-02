@@ -43,4 +43,5 @@ Primero se descargan las librerias wfdb, Numpy, Matplotlib, Scipicy y Pandas
 
 
 ''' !pip install wfdb
+
 !pip install numpy matplotlib scipy pandas '''
