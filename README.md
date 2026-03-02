@@ -42,6 +42,6 @@ Se descargó una señal fisiológica desde PhysioNet, la cual fue importada y gr
 Primero se descargan las librerias wfdb, Numpy, Matplotlib, Scipicy y Pandas 
 
 
-''' !pip install wfdb
-
+''' 
+!pip install wfdb
 !pip install numpy matplotlib scipy pandas '''
