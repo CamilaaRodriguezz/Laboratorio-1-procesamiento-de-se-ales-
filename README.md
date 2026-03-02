@@ -128,5 +128,111 @@ print("Media:", media)
 print("Desviación estándar:", desv_std)
 print("Coeficiente de variación:", cv)
 print("Asimetría:", skewness)
+
+```
+```
+#Vamos a graficar el histogrma de un tamaño de 10 de ancho y 5 de alto
+#El histograma sera de los datos señal
+#bins es para dividir los datos en intervalos de 50 datos
+# Ademas agrega caracteristicas como titulo de la grafica, color del histograma y nombres de los ejes
+plt.figure(figsize=(10,5))
+plt.hist(señal, bins=50, color='pink', edgecolor='black', density=True)
+plt.title("Histograma de la señal 1 physioNet")
+plt.xlabel("Amplitud (mS)")
+plt.ylabel("Frecuencia (Hz)")
+plt.grid(True)
+plt.show()
+
+```
+<img width="872" height="470" alt="image" src="https://github.com/user-attachments/assets/83050ce5-67ed-49ab-a89d-dda1b27b91ad" />
+
+## Parte B
+Se generó una señal ECG a partir del generador de señales y se capturó con un DAQ para posteriormente imporatrla a spyder y asi poder graficarla en el histograma y graficar la señla del generador de señales en el computador.
+
+```
+
+# Cargar archivo .txt:
+#delimiter='\t' separa columnas por tabulaciones
+#skiprows=1 ignora la primera fila (encabezado) 
+datos = np.loadtxt('/content/drive/MyDrive/Colab Notebooks/senal_ecg.txt', delimiter='\t', skiprows=1)
+
+# Separar columnas
+# t las separa en tiempo
+# senal amplitud del ECG
+t = datos[:, 0]
+senal = datos[:, 1]
+
+# Calcular frecuencia de muestreo automáticamente
+fs = 1 / (t[1] - t[0])
+
+# Graficar
+#Grafica la señal en funcion de tiempo
+plt.figure(figsize=(12,4))
+plt.plot(t, senal)
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.title("Señal ECG")
+plt.grid()
+plt.show()
+
+```
+<img width="1012" height="393" alt="image" src="https://github.com/user-attachments/assets/518c1289-ff1a-4733-99a3-d963cfa35cee" />
+
+```
+#Hacemos los msimos calculos de la parte A pero con la señal capturada por el DAQ
+N = len(senal)
+
+# 1. Media
+media = sum(senal) / N
+
+# 2. Desviación estándar
+suma_var = 0
+for x in senal:
+    suma_var += (x - media)**2
+
+varianza = suma_var / N
+desv_std = np.sqrt(varianza)
+
+# 3. Coeficiente de variación
+cv = desv_std / media if media != 0 else 0
+
+# 4. Asimetría
+suma_skew = 0
+for x in senal:
+    suma_skew += (x - media)**3
+
+skew_manual = (suma_skew / N) / (desv_std**3)
+
+# 5. Curtosis
+suma_kurt = 0
+for x in senal:
+    suma_kurt += (x - media)**4
+
+kurt_manual = (suma_kurt / N) / (desv_std**4)
+
+print("=== MÉTODO MANUAL ===")
+print("Media:", media)
+print("Desviación estándar:", desv_std)
+print("Coeficiente de variación:", cv)
+print("Asimetría:", skew_manual)
+print("Curtosis:", kurt_manual)
 print("Curtosis:", kurt)
 ```
+=== MÉTODO MANUAL ===
+Media: -0.2755946689535922
+Desviación estándar: 0.13148674086055573
+Coeficiente de variación: -0.4771019024417231
+Asimetría: 4.174142421525527
+Curtosis: 22.28656812149953
+```
+plt.figure(figsize=(10,5))
+plt.hist(senal, bins=50, color='purple', edgecolor='black', density=True)
+plt.title("Histograma de la señal 2 (Parte B Generador)")
+plt.xlabel("Amplitud (mV)")
+plt.ylabel("Densidad de probabilidad ")
+plt.grid(True)
+plt.show()
+
+```
+<img width="841" height="470" alt="image" src="https://github.com/user-attachments/assets/ab7fbd70-15a1-4ed0-8d45-b5b39589bf33" />
+
