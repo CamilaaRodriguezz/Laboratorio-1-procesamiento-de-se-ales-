@@ -54,6 +54,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import skew, kurtosis
 
 ```
+```
 #Con drive.mount se conecta google colab con Google drive para importar la señal guardada en .txt 
 from google.colab import drive
 drive.mount('/content/drive')
