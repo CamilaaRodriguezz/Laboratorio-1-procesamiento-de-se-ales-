@@ -62,6 +62,10 @@ drive.mount('/content/drive')
 record = wfdb.rdrecord('/content/drive/MyDrive/Colab Notebooks/121001_ECG')
 # p_signal es un tipo de matriz que contiene la señal
 signal = record.p_signal[:,0]
+
+```
+```
+# Se grafico la señal mediante la libreria Matplotlib, ademas se puso el titulo de la grafica, una cuadricula y se añadieron las etiquetas de los ejes
 plt.figure()
 plt.plot(signal)
 plt.title("Señal ECG PhysioNet")
@@ -71,3 +75,5 @@ plt.grid()
 plt.show()
 
 ```
+<img width="600" height="455" alt="image" src="https://github.com/user-attachments/assets/ac1a5ba5-27ca-476e-8408-da80fdb6f113" />
+
