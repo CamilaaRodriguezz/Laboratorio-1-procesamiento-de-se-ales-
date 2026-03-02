@@ -77,3 +77,12 @@ plt.show()
 ```
 <img width="600" height="455" alt="image" src="https://github.com/user-attachments/assets/ac1a5ba5-27ca-476e-8408-da80fdb6f113" />
 
+
+```
+#Se recorta la señal para tener una grafica con mejor definicion, recortamos la grafica anterior de la muestra 1000 a la 5999
+señal=signal[1000:6000]
+plt.plot(señal)
+
+```
+<img width="560" height="413" alt="image" src="https://github.com/user-attachments/assets/6543d84c-4fb8-47de-81cf-32b5705da9ad" />
+
