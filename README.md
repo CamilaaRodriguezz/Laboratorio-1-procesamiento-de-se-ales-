@@ -86,3 +86,47 @@ plt.plot(señal)
 ```
 <img width="560" height="413" alt="image" src="https://github.com/user-attachments/assets/6543d84c-4fb8-47de-81cf-32b5705da9ad" />
 
+Inicio cálculos estadísticos
+```
+# Número de datos
+#len() cuenta cuantos datos tiene la señal
+N = len(señal)
+# 1. MEDIA
+#Se suman todos los datos de la señal y se dividen entre el numero total de datos
+media = sum(señal) / N
+# 2. DESVIACIÓN ESTÁNDAR
+#Se recorre cada dato x iniciando desde 0 y se va restando a la media y elevando al cuadrado.
+#finalmente se suman todos esos datos en suma_var
+suma_var = 0
+for x in señal:
+    suma_var += (x - media)**2
+#Para tener la varianza dividmios suma_var sobre el numero de datos
+varianza = suma_var / N
+#sacamos la raiz cuadrada de la varianza para obtener desviacion estandar
+desv_std = np.sqrt(varianza)
+# 3. COEFICIENTE DE VARIACIÓN
+cv = desv_std / media
+# 4. ASIMETRÍA (SKEWNESS)
+#Calculamos hacia que lado se inclina la distribucion
+suma_skew = 0
+for x in señal:
+    suma_skew += (x - media)**3
+
+skewness = (suma_skew / N) / (desv_std**3)
+# 5. CURTOSIS
+Mide si tenemos una distribucion leptocurtica, mesocurtica o platicurtica usando la formul ade curtosis
+suma_kurt = 0
+for x in señal:
+    suma_kurt += (x - media)**4
+kurt = (suma_kurt / N) / (desv_std**4)
+
+```
+```
+# RESULTADOS
+print(" ESTADÍSTICOS (DESDE CERO) ")
+print("Media:", media)
+print("Desviación estándar:", desv_std)
+print("Coeficiente de variación:", cv)
+print("Asimetría:", skewness)
+print("Curtosis:", kurt)
+```
