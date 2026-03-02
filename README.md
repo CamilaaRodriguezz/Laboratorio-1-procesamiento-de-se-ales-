@@ -43,5 +43,25 @@ Se descargó una señal fisiológica desde PhysioNet, la cual fue importada y gr
 #Descarga de librerias
 !pip install wfdb
 !pip install numpy matplotlib scipy pandas
+#Se importan las librerias instaladas anteriormente
+import wfdb
+import numpy as np
+import matplotlib.pyplot as plt
+#skew y curtosis son para calcular asimetria y curtosis respectivamente
+from scipy.stats import skew, kurtosis
+#Con drive.mount se conecta google colab con Google drive para importar la señal guardada en .txt 
+from google.colab import drive
+drive.mount('/content/drive')
+#Con la libreria anteriormente instalada de wfdb podemos leer la señal fisiologica
+record = wfdb.rdrecord('/content/drive/MyDrive/Colab Notebooks/121001_ECG')
+#p_signal es un tipo de matriz que contiene la señal
+signal = record.p_signal[:,0]
+plt.figure()
+plt.plot(signal)
+plt.title("Señal ECG PhysioNet")
+plt.xlabel("Muestras")
+plt.ylabel("Amplitud")
+plt.grid()
+plt.show()
 
 ```
