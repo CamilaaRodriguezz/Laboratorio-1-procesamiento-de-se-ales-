@@ -220,9 +220,13 @@ print("Curtosis:", kurt)
 ```
 === MÉTODO MANUAL ===
 Media: -0.2755946689535922
+
 Desviación estándar: 0.13148674086055573
+
 Coeficiente de variación: -0.4771019024417231
+
 Asimetría: 4.174142421525527
+
 Curtosis: 22.28656812149953
 ```
 plt.figure(figsize=(10,5))
