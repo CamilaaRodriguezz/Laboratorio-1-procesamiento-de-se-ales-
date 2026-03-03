@@ -393,3 +393,8 @@ plt.grid()
 plt.show()
 ```
 <img width="1002" height="374" alt="image" src="https://github.com/user-attachments/assets/fe8c1e8d-5ebd-4029-84c9-652e31ff1ae9" />
+
+# Conclusion
+En esta práctica se analizaron diferentes características de una señal utilizando medidas estadísticas como el promedio, la desviación estándar, la asimetría y la curtosis. Estas herramientas permitieron describir su comportamiento general y comprender mejor cómo se distribuyen sus valores, sin depender únicamente de puntos específicos.
+
+Además, al comparar una señal descargada con una adquirida por el generador de señales, se evidenciaron diferencias asociadas principalmente al ruido y a las condiciones de su captura. El análisis de la relación señal-ruido permitió observar cómo distintos tipos de contaminación afectan la calidad de la señal y, en consecuencia, los resultados obtenidos. En conclusión, el uso de la estadística resulta útil para evaluar la calidad de una señal y facilitar su interpretación, aunque es necesario complementarlo con otros métodos para lograr un análisis más completo.
