@@ -1,7 +1,7 @@
 # LABORATORIO 1 PROCESAMIENTO DIGITAL DE SEÑALES
 # Análisis estadísticos de las señales 
 ## Docente : Manuel Fernando Torres
-## Integrantes : Maria Camila Rodriguez Gomez, Valery Guerra Mendez
+## Integrantes : Maria Camila Rodriguez Gomez, Valery Guerra Mendez, Danna Gabriela Moyano Cano
 
 
 
@@ -92,9 +92,13 @@ Inicio cálculos estadísticos
 # Número de datos
 #len() cuenta cuantos datos tiene la señal
 N = len(señal)
+```
+```
 # 1. MEDIA
 #Se suman todos los datos de la señal y se dividen entre el numero total de datos
 media = sum(señal) / N
+```
+```
 # 2. DESVIACIÓN ESTÁNDAR
 #Se recorre cada dato x iniciando desde 0 y se va restando a la media y elevando al cuadrado.
 #finalmente se suman todos esos datos en suma_var
@@ -105,8 +109,12 @@ for x in señal:
 varianza = suma_var / N
 #sacamos la raiz cuadrada de la varianza para obtener desviacion estandar
 desv_std = np.sqrt(varianza)
+```
+```
 # 3. COEFICIENTE DE VARIACIÓN
 cv = desv_std / media
+```
+```
 # 4. ASIMETRÍA (SKEWNESS)
 #Calculamos hacia que lado se inclina la distribucion
 suma_skew = 0
@@ -114,6 +122,8 @@ for x in señal:
     suma_skew += (x - media)**3
 
 skewness = (suma_skew / N) / (desv_std**3)
+```
+```
 # 5. CURTOSIS
 Mide si tenemos una distribucion leptocurtica, mesocurtica o platicurtica usando la formul ade curtosis
 suma_kurt = 0
@@ -219,7 +229,8 @@ print("Asimetría:", skew_manual)
 print("Curtosis:", kurt_manual)
 print("Curtosis:", kurt)
 ```
-=== MÉTODO MANUAL ===
+Con el método manual tenemos los siguientes resultados: 
+
 Media: -0.2755946689535922
 
 Desviación estándar: 0.13148674086055573
