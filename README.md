@@ -1,7 +1,8 @@
 # LABORATORIO 1 PROCESAMIENTO DIGITAL DE SEÑALES
 # Análisis estadísticos de las señales 
 ## Docente : Manuel Fernando Torres
-## Integrantes : Maria Camila Rodriguez Gomez 
+## Integrantes : Maria Camila Rodriguez Gomez, Valery Guerra Mendez
+
 
 
 ## Fecha : Febrero 2026
@@ -239,4 +240,20 @@ plt.show()
 
 ```
 <img width="841" height="470" alt="image" src="https://github.com/user-attachments/assets/ab7fbd70-15a1-4ed0-8d45-b5b39589bf33" />
+ Y a esto que nos dió se le hace la distribución de los datos
+
+```
+x = np.linspace(min(senal), max(senal), 1000)
+pdf = (1/(desv_std*np.sqrt(2*np.pi))) * np.exp(-(x-media)**2/(2*desv_std**2))
+
+plt.figure(figsize=(10,5))
+plt.hist(senal, bins=50, density=True, edgecolor='black')
+plt.plot(x, pdf)
+plt.title("Histograma + Distribución normal")
+plt.xlabel("Amplitud (mV)")
+plt.ylabel("Densidad de probabilidad")
+plt.grid()
+plt.show()
+```
+ <img width="841" height="471" alt="image" src="https://github.com/user-attachments/assets/dc0c84ff-d0fa-40db-a0f6-e417eec78630" />
 
