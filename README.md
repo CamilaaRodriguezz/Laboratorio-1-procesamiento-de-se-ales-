@@ -240,6 +240,7 @@ plt.show()
 
 ```
 <img width="841" height="470" alt="image" src="https://github.com/user-attachments/assets/ab7fbd70-15a1-4ed0-8d45-b5b39589bf33" />
+
  Y a esto que nos dió se le hace la distribución de los datos
 
 ```
@@ -257,3 +258,127 @@ plt.show()
 ```
  <img width="841" height="471" alt="image" src="https://github.com/user-attachments/assets/dc0c84ff-d0fa-40db-a0f6-e417eec78630" />
 
+## Parte C
+Para esta última parte de la práctica se centró en el SNR, tomando la señal usada en la parte B y contaminarla de distintas maneras y así mismo sacar su SNR.
+
+Primero se contaminó con un ruido gaussiano:
+```
+def calcular_snr(senal_original, senal_ruido):
+    ruido = senal_ruido - senal_original
+    potencia_senal = np.mean(senal_original**2)
+    potencia_ruido = np.mean(ruido**2)
+    snr = 10 * np.log10(potencia_senal / potencia_ruido)
+    return snr
+     
+
+# Generar ruido gaussiano
+ruido_gauss = np.random.normal(0, 0.1, len(senal))
+
+# Señal contaminada
+senal_gauss = senal + ruido_gauss
+
+# Calcular SNR
+snr_gauss = calcular_snr(senal, senal_gauss)
+
+print("SNR con ruido gaussiano:", snr_gauss, "dB")
+
+# Graficar
+plt.figure(figsize=(12,4))
+plt.plot(senal_gauss)
+plt.title("Señal con ruido gaussiano")
+plt.grid()
+plt.show()
+     
+SNR con ruido gaussiano: 9.483493409250972 dB
+```
+<img width="993" height="374" alt="image" src="https://github.com/user-attachments/assets/c40b48e3-5afa-476d-a36b-62e7450010b9" />
+
+Y se hizo una comparativa entre la señal original con el ruido administrado:
+```
+plt.figure(figsize=(12,4))
+plt.plot(senal, label="Original")
+plt.plot(senal_gauss, alpha=0.7, label="Con ruido")
+plt.legend()
+plt.title("Comparación señal original vs ruido gaussiano")
+plt.grid()
+plt.show()
+```
+
+<img width="993" height="374" alt="image" src="https://github.com/user-attachments/assets/702ee19a-e870-470a-a24f-1c8f5f36a760" />
+
+En segundo lugar se contaminó la señal con ruido impulso quedando que:
+
+```
+senal_impulso = senal.copy()
+
+# Crear impulsos aleatorios
+num_impulsos = int(0.01 * len(senal))  # 1% de la señal
+indices = np.random.randint(0, len(senal), num_impulsos)
+
+senal_impulso[indices] += np.random.choice([3, -3], size=num_impulsos)
+
+# SNR
+snr_impulso = calcular_snr(senal, senal_impulso)
+
+print("SNR con ruido impulso:", snr_impulso, "dB")
+
+# Graficar
+plt.figure(figsize=(12,4))
+plt.plot(senal_impulso)
+plt.title("Señal con ruido impulso")
+plt.grid()
+plt.show()
+     
+SNR con ruido impulso: 0.15365272915878503 dB
+```
+Y se realizó su comparativa:
+
+```
+plt.figure(figsize=(12,4))
+plt.plot(senal, label="Original")
+plt.plot(senal_impulso, alpha=0.7, label="Con impulso")
+plt.legend()
+plt.title("Comparación señal original vs ruido impulso")
+plt.grid()
+plt.show()   
+```
+<img width="980" height="374" alt="image" src="https://github.com/user-attachments/assets/7b37f92b-5e79-4461-8ab3-3d1bda93c3bc" />
+
+Finalmente, se contaminó la señal con un ruido tipo artefacto:
+
+```
+t = np.arange(len(senal))
+
+# Ruido tipo artefacto (baja frecuencia)
+ruido_artefacto = 0.5 * np.sin(0.01 * t)
+
+senal_artefacto = senal + ruido_artefacto
+
+# SNR
+snr_artefacto = calcular_snr(senal, senal_artefacto)
+
+print("SNR con ruido artefacto:", snr_artefacto, "dB")
+
+# Graficar
+plt.figure(figsize=(12,4))
+plt.plot(senal_artefacto)
+plt.title("Señal con ruido tipo artefacto")
+plt.grid()
+plt.show()
+     
+SNR con ruido artefacto: -1.0687714480082486 dB
+```
+<img width="1002" height="374" alt="image" src="https://github.com/user-attachments/assets/c7c325a5-83a8-48b7-aeae-a4ca7cf502ba" />
+
+Y se comparó con la señal original:
+
+```
+plt.figure(figsize=(12,4))
+plt.plot(senal, label="Original")
+plt.plot(senal_artefacto, alpha=0.7, label="Con artefacto")
+plt.legend()
+plt.title("Comparación señal original vs artefacto")
+plt.grid()
+plt.show()
+```
+<img width="1002" height="374" alt="image" src="https://github.com/user-attachments/assets/fe8c1e8d-5ebd-4029-84c9-652e31ff1ae9" />
