@@ -158,7 +158,7 @@ plt.show()
 <img width="872" height="470" alt="image" src="https://github.com/user-attachments/assets/83050ce5-67ed-49ab-a89d-dda1b27b91ad" />
 
 ## Parte B
-Se generó una señal ECG a partir del generador de señales y se capturó con un DAQ para posteriormente imporatrla a spyder y asi poder graficarla en el histograma y graficar la señla del generador de señales en el computador.
+Se generó una señal ECG a partir del generador de señales y se capturó con un DAQ para posteriormente importarla a spyder y asi poder graficarla en el histograma y graficar la señal del generador de señales en el computador.
 
 ```
 
